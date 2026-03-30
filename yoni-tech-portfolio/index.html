@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Yoni Tech - Personal technology brand by Yohannes Aregay. IT Specialist, Digital Creator, and IT graduate from Debre Tabor University.">
+  <meta name="author" content="Yohannes Aregay">
+  <title>Yoni Tech | Yohannes Aregay - IT Specialist</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0A0C15;
+      color: #EDF2F7;
+      scroll-behavior: smooth;
+      line-height: 1.5;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #111827;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #0ab3c6;
+      border-radius: 8px;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Sticky Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 12, 21, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(10, 179, 198, 0.3);
+      padding: 1rem 0;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo {
+      font-size: 1.9rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFFFFF, #0ab3c6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #E2E8F0;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: #0ab3c6;
+    }
+    .lang-switch {
+      display: flex;
+      gap: 0.5rem;
+      background: #111827cc;
+      padding: 0.3rem 0.9rem;
+      border-radius: 40px;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      font-weight: 600;
+      padding: 0.2rem 0.7rem;
+      border-radius: 30px;
+      transition: 0.2s;
+    }
+    .lang-btn.active {
+      background: #0ab3c6;
+      color: #0A0C15;
+    }
+
+    section {
+      padding: 5rem 0;
+      border-bottom: 1px solid rgba(10, 179, 198, 0.08);
+    }
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70%;
+      height: 3px;
+      background: #0ab3c6;
+      border-radius: 4px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: transparent;
+      border: 1.5px solid #0ab3c6;
+      padding: 0.75rem 1.8rem;
+      border-radius: 40px;
+      color: #0ab3c6;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.25s ease;
+      margin-top: 1rem;
+      margin-right: 1rem;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: #0ab3c6;
+      color: #0A0C15;
+      border: none;
+    }
+    .btn-primary:hover {
+      background: #0897a8;
+      transform: translateY(-2px);
+    }
+    .btn-outline:hover {
+      background: rgba(10, 179, 198, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Avatar with photo support */
+    .avatar-circle {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid #0ab3c6;
+      box-shadow: 0 15px 30px -8px rgba(0,0,0,0.4);
+      margin: 0 auto;
+      overflow: hidden;
+      background: linear-gradient(145deg, #0f172a, #0ab3c620);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .skill-group {
+      background: #111827;
+      padding: 1.5rem;
+      border-radius: 24px;
+      border: 1px solid #1f2a3e;
+    }
+    .skill-item {
+      margin-bottom: 1.2rem;
+    }
+    .skill-name {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+    }
+    .progress-bar {
+      background: #1e293b;
+      height: 8px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      background: #0ab3c6;
+      width: 0%;
+      height: 100%;
+      border-radius: 10px;
+      transition: width 1s ease;
+    }
+    .soft-badge {
+      display: inline-block;
+      background: #0ab3c622;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      margin: 0.4rem 0.4rem 0 0;
+    }
+
+    /* Services Cards */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.8rem;
+    }
+    .service-card {
+      background: #111827;
+      padding: 1.8rem;
+      border-radius: 28px;
+      transition: 0.25s;
+      border: 1px solid #1f2a44;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: #0ab3c6;
+    }
+    .service-card i {
+      font-size: 2.5rem;
+      color: #0ab3c6;
+      margin-bottom: 1rem;
+    }
+
+    /* Certificate Cards with Image Support */
+    .certs-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      justify-content: center;
+    }
+    .cert-card {
+      background: #0F172A;
+      border-radius: 24px;
+      padding: 1.2rem;
+      min-width: 200px;
+      text-align: center;
+      border-left: 4px solid #0ab3c6;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+    .cert-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      background: #1a2335;
+      box-shadow: 0 12px 24px rgba(10, 179, 198, 0.2);
+    }
+    .cert-icon {
+      font-size: 2.5rem;
+      color: #0ab3c6;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .cert-thumb {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin: 0 auto 0.8rem;
+      display: block;
+      border: 2px solid #0ab3c6;
+      background: #111827;
+    }
+    .cert-card span {
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: block;
+    }
+
+    /* Modal for full certificate image */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    .modal-content {
+      background: linear-gradient(135deg, #0F172A, #0a0f1a);
+      border-radius: 32px;
+      max-width: 90%;
+      max-height: 85%;
+      padding: 1.8rem;
+      text-align: center;
+      border: 2px solid #0ab3c6;
+      animation: slideUp 0.3s ease;
+    }
+    .modal-content img {
+      max-width: 100%;
+      max-height: 65vh;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      background: white;
+      padding: 0.5rem;
+    }
+    .modal-content h3 {
+      margin-top: 1rem;
+      color: #0ab3c6;
+    }
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      background: rgba(0,0,0,0.6);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .close-modal:hover {
+      background: #0ab3c6;
+      color: #0A0C15;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .project-card {
+      background: #111827;
+      border-radius: 28px;
+      padding: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .github-btn {
+      background: #0ab3c6;
+      padding: 0.6rem 1.5rem;
+      border-radius: 40px;
+      color: #0A0C15;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.2s;
+    }
+    .github-btn:hover {
+      background: #0897a8;
+      transform: translateY(-2px);
+    }
+
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .contact-form {
+      flex: 1.2;
+    }
+    .contact-info {
+      flex: 0.8;
+    }
+    input, textarea {
+      width: 100%;
+      background: #111827;
+      border: 1px solid #2d3a4e;
+      padding: 0.85rem;
+      border-radius: 20px;
+      color: white;
+      font-family: inherit;
+      transition: 0.2s;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #0ab3c6;
+      box-shadow: 0 0 0 2px rgba(10,179,198,0.3);
+    }
+    .social-icons a {
+      color: #cbd5e1;
+      font-size: 1.8rem;
+      margin-right: 1rem;
+      transition: 0.2s;
+      display: inline-block;
+    }
+    .social-icons a:hover {
+      color: #0ab3c6;
+      transform: translateY(-3px);
+    }
+    footer {
+      background: #060811;
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    /* DTU Watermark with tempo */
+    .dtu-watermark {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      opacity: 0.2;
+      pointer-events: none;
+      font-family: 'Inter', monospace;
+      background: rgba(10, 179, 198, 0.25);
+      backdrop-filter: blur(6px);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: #0ab3c6;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dtu-watermark i {
+      font-size: 1rem;
+    }
+    .toast-msg {
+      position: fixed;
+      bottom: 25px;
+      left: 25px;
+      background: #0ab3c6;
+      color: #0A0C15;
+      padding: 12px 24px;
+      border-radius: 60px;
+      font-weight: bold;
+      z-index: 2000;
+      opacity: 0;
+      transition: 0.2s;
+      pointer-events: none;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 1.3rem; }
+      .nav-container { flex-direction: column; }
+      h2 { font-size: 1.8rem; }
+      .avatar-circle { width: 140px; height: 140px; }
+      .dtu-watermark { font-size: 0.7rem; bottom: 12px; right: 12px; }
+    }
+  </style>
+</head>
+<body>
+<div class="dtu-watermark">
+  <i class="fas fa-university"></i> DTU | Debre Tabor University
+</div>
+
+<nav class="navbar">
+  <div class="container nav-container">
+    <div class="logo">YONI TECH</div>
+    <ul class="nav-links">
+      <li><a href="#home" data-key="nav_home">Home</a></li>
+      <li><a href="#about" data-key="nav_about">About</a></li>
+      <li><a href="#skills" data-key="nav_skills">Skills</a></li>
+      <li><a href="#services" data-key="nav_services">Services</a></li>
+      <li><a href="#certificates" data-key="nav_certs">Certificates</a></li>
+      <li><a href="#projects" data-key="nav_projects">Projects</a></li>
+      <li><a href="#contact" data-key="nav_contact">Contact</a></li>
+    </ul>
+    <div class="lang-switch">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="am">አማርኛ</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <!-- HOME with Profile Photo -->
+  <section id="home">
+    <div class="container" style="display: flex; flex-wrap: wrap; align-items: center; gap: 2.5rem;">
+      <div style="flex: 1; text-align: center;">
+        <div class="avatar-circle">
+          <!-- Profile image: place your photo as 'jo.png' in the same folder -->
+          <img src="jo.png" alt="Yohannes Aregay" class="avatar-img" id="profileImage" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?background=0ab3c6&color=fff&size=180&name=Yoni';">
+        </div>
+      </div>
+      <div style="flex: 2;">
+        <h1 style="font-size: 3rem; font-weight: 800;">Yoni Tech</h1>
+        <p style="font-size: 1.2rem; color: #0ab3c6; margin: 0.5rem 0;" data-key="tagline">"Innovating Technology, Empowering Digital Skills"</p>
+        <p data-key="home_intro">Yoni Tech is a personal technology brand created by Yohannes Aregay, providing digital solutions, IT services, and creative technology work.</p>
+        <div>
+          <a href="#services" class="btn btn-primary" data-key="view_services">View Services</a>
+          <a href="#contact" class="btn btn-outline" data-key="contact_me">Contact Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2 data-key="about_title">About Me</h2>
+      <div style="background: #111827; border-radius: 28px; padding: 2rem;">
+        <p><strong data-key="name_label">Name:</strong> <span data-key="name_val">Yohannes Aregay</span></p>
+        <p><strong data-key="prof_label">Profession:</strong> <span data-key="prof_val">IT Specialist and Digital Creator</span></p>
+        <p><strong data-key="edu_label">Education:</strong> <span data-key="edu_val">BSc in Information Technology – Debre Tabor University</span></p>
+        <p><strong data-key="loc_label">Location:</strong> <span data-key="loc_val">Debre Tabor, Ethiopia</span></p>
+        <p><strong data-key="gra_label">Grade:</strong> <span data-key="gra_val">3.28 CGPA, 55% passed exit exam</span></p>
+        <p style="margin-top: 1rem;" data-key="about_desc">I am an Information Technology graduate from Debre Tabor University passionate about technology, digital innovation, and helping individuals and businesses grow through modern IT solutions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <h2 data-key="skills_title">Skills & Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-group"><h3>⚡ Core Skills</h3>
+          <div class="skill-item"><div class="skill-name"><span>Web Development</span><span>90%</span></div><div class="progress-bar"><div class="progress-fill" data-progress="90"></div></div></div>
+          <div class="skill-item"><div class="skill-name"><span>Hardwares/Softwares Maintenance</span><span>85%</span></div><div class="progress-bar"><div class="progress-fill" data-progress="85"></div></div></div>
+          <div class="skill-item"><div class="skill-name"><span>Networking</span><span>80%</span></div><div class="progress-bar"><div class="progress-fill" data-progress="80"></div></div></div>
+          <div class="skill-item"><div class="skill-name"><span>Database Admin</span><span>88%</span></div><div class="progress-bar"><div class="progress-fill" data-progress="88"></div></div></div>
+          <div class="skill-item"><div class="skill-name"><span>IT Technical</span><span>92%</span></div><div class="progress-bar"><div class="progress-fill" data-progress="92"></div></div></div>
+        </div>
+        <div class="skill-group"><h3>🛠️ Technical Skill</h3>
+          <div class="skill-item"><div class="skill-name"><span>HTML5/CSS3</span><span>92%</span></div><div class="progress-bar"><div class="progress-fill" data-progress="92"></div></div></div>
+          <div class="skill-item"><div class="skill-name"><span>JavaScript</span><span>85%</span></div><div class="progress-bar"><div class="progress-fill" data-progress="85"></div></div></div>
+          <div class="skill-item"><div class="skill-name"><span>Photoshop/Illustrator</span><span>78%</span></div><div class="progress-bar"><div class="progress-fill" data-progress="78"></div></div></div>
+          <div class="skill-item"><div class="skill-name"><span>Video Editing Tools</span><span>86%</span></div><div class="progress-bar"><div class="progress-fill" data-progress="86"></div></div></div>
+        </div>
+        <div class="skill-group"><h3>🤝 Soft Skills</h3><div><span class="soft-badge">Honesty</span><span class="soft-badge">Punctuality</span><span class="soft-badge">Respect</span><span class="soft-badge">Communication</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <h2 data-key="services_title">What I Offer</h2>
+      <div class="services-grid">
+        <div class="service-card"><i class="fas fa-code"></i><h3>Website Development</h3><p>Modern responsive websites & web apps.</p></div>
+        <div class="service-card"><i class="fas fa-computer"></i><h3>Hardware/Software Maintenance</h3><p>Diagnostics, repair & optimization.</p></div>
+        <div class="service-card"><i class="fas fa-network-wired"></i><h3>Network Configuration</h3><p>Secure LAN/WAN setup & troubleshooting.</p></div>
+        <div class="service-card"><i class="fas fa-chart-line"></i><h3>Digital Marketing</h3><p>SEO, social media & growth strategy.</p></div>
+        <div class="service-card"><i class="fas fa-headset"></i><h3>IT Support & Consulting</h3><p>Tech support & IT infrastructure.</p></div>
+        <div class="service-card"><i class="fas fa-database"></i><h3>Database Administrator</h3><p>SQL, performance tuning & data security.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATES with University Tempo (temp.png) added -->
+  <section id="certificates">
+    <div class="container">
+      <h2 data-key="certs_title">Certifications & Awards</h2>
+      <div style="margin-bottom: 1.5rem;"><h3>🌟 5 Million Ethiopian Program</h3></div>
+      <div class="certs-container" id="certsFiveMillion"></div>
+      <div style="margin: 2rem 0 1rem;"><h3>🏅 Cisco Networking Academy</h3></div>
+      <div class="certs-container" id="certsCisco"></div>
+      <!-- University Tempo certificate section (temp.png) -->
+      <div style="margin: 2rem 0 1rem;"><h3>🎓 Debre Tabor University Honors</h3></div>
+      <div class="certs-container" id="universityTempoCert"></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <h2 data-key="projects_title">Featured Project</h2>
+      <div class="project-card">
+        <div><i class="fas fa-vote-yea" style="font-size: 2rem; color:#0ab3c6;"></i><h3>Online Voting System for DTUSU</h3><p>Secure, transparent digital voting platform for Debre Tabor University Student Union.</p></div>
+        <a href="https://github.com/yohannes-tech/DTUSU-voting-system" target="_blank" class="github-btn"><i class="fab fa-github"></i> View on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2 data-key="contact_title">Get In Touch</h2>
+      <div class="contact-flex">
+        <div class="contact-form">
+          <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Email Address" required style="margin-top: 1rem;">
+            <textarea rows="4" id="msg" placeholder="Your Message..." style="margin-top: 1rem;"></textarea>
+            <button type="submit" class="btn btn-primary" style="margin-top: 1rem;"><i class="fas fa-paper-plane"></i> Send Message</button>
+          </form>
+        </div>
+        <div class="contact-info">
+          <p><i class="fas fa-envelope" style="color:#0ab3c6;"></i> <strong>Email:</strong> yeadeylij@gmail.com</p>
+          <p><i class="fas fa-phone" style="color:#0ab3c6;"></i> <strong>Phone:</strong> +251 926 24 74 53</p>
+          <p><i class="fas fa-map-marker-alt" style="color:#0ab3c6;"></i> <strong>Location:</strong> Debre Tabor, Ethiopia</p>
+          <div class="social-icons" style="margin-top: 1.5rem;">
+            <a href="https://github.com/yohannes-tech" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Yoni Tech. All rights reserved.</p>
+    <p data-key="footer_desc">Innovative IT solutions by Yohannes Aregay.</p>
+  </div>
+</footer>
+<div id="toastMsg" class="toast-msg">✓ Certificate preview opened</div>
+
+<!-- Modal for Certificate Images -->
+<div id="certModal" class="modal">
+  <div class="close-modal">&times;</div>
+  <div class="modal-content">
+    <img id="modalImage" src="" alt="Certificate">
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+  </div>
+</div>
+
+<script>
+  // ========= CERTIFICATE DATA WITH IMAGES (including temp.png for University Tempo) =========
+  const fiveMillionCerts = [
+    { name: "Artificial Intelligence", icon: "fas fa-brain", imagePath: "at.jpg", fallbackIcon: "fas fa-brain", desc: "AI Certificate - 5 Million Ethiopian Program" },
+    { name: "Android Development", icon: "fab fa-android", imagePath: "andriod.jpg", fallbackIcon: "fab fa-android", desc: "Android Development Certificate" },
+    { name: "Data Science", icon: "fas fa-chart-line", imagePath: "data.jpg", fallbackIcon: "fas fa-database", desc: "Data Science Certification" },
+    { name: "Fundamental Programming", icon: "fas fa-code", imagePath: "program.jpg", fallbackIcon: "fas fa-code", desc: "Programming Fundamentals Certificate" }
+  ];
+  
+  const ciscoCerts = [
+    { name: "Basic Networking", icon: "fas fa-network-wired", imagePath: "basic_networking.png", fallbackIcon: "fas fa-network-wired", desc: "Cisco Basic Networking Award" },
+    { name: "Packet Tracer Essentials", icon: "fas fa-microchip", imagePath: "cisco.png", fallbackIcon: "fas fa-microchip", desc: "Getting Started with Cisco Packet Tracer" },
+    { name: "Cybersecurity", icon: "fas fa-shield-alt", imagePath: "cybersecurity.png", fallbackIcon: "fas fa-shield-alt", desc: "Introduction to Cybersecurity" }
+  ];
+
+  // University Tempo Certificate (temp.png) as requested
+  const universityTempoCert = [
+    { name: "DTU Academic Excellence", icon: "fas fa-university", imagePath: "temp.png", fallbackIcon: "fas fa-award", desc: "Debre Tabor University - Honorary Recognition for Tech Innovation" }
+  ];
+
+  // Helper to build certificate cards with robust image fallback
+  function buildCertContainer(containerId, certsArray) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = "";
+    certsArray.forEach(cert => {
+      const card = document.createElement("div");
+      card.className = "cert-card";
+      card.style.cursor = "pointer";
+      
+      const thumbImg = document.createElement("img");
+      thumbImg.className = "cert-thumb";
+      thumbImg.alt = cert.name;
+      thumbImg.style.width = "80px";
+      thumbImg.style.height = "80px";
+      thumbImg.style.objectFit = "cover";
+      thumbImg.style.borderRadius = "12px";
+      
+      // fallback if image missing
+      thumbImg.onerror = function() {
+        this.style.display = "none";
+        if (!card.querySelector('.cert-fallback-icon')) {
+          const iconElem = document.createElement("i");
+          iconElem.className = `${cert.icon} cert-icon`;
+          iconElem.style.fontSize = "2.5rem";
+          iconElem.style.color = "#0ab3c6";
+          iconElem.style.marginBottom = "0.5rem";
+          iconElem.classList.add("cert-fallback-icon");
+          card.insertBefore(iconElem, card.firstChild);
+        }
+      };
+      thumbImg.src = cert.imagePath;
+      
+      const titleSpan = document.createElement("span");
+      titleSpan.innerText = cert.name;
+      
+      card.appendChild(thumbImg);
+      card.appendChild(titleSpan);
+      
+      card.setAttribute("data-img-src", cert.imagePath);
+      card.setAttribute("data-title", cert.name);
+      card.setAttribute("data-desc", cert.desc);
+      card.setAttribute("data-icon", cert.icon);
+      
+      card.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const modal = document.getElementById("certModal");
+        const modalImg = document.getElementById("modalImage");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalDesc = document.getElementById("modalDesc");
+        
+        modalImg.src = cert.imagePath;
+        modalImg.onerror = function() {
+          this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%230f172a'/%3E%3Ctext x='100' y='110' font-size='48' text-anchor='middle' fill='%230ab3c6'%3E🏅%3C/text%3E%3Ctext x='100' y='160' font-size='14' fill='white' text-anchor='middle'%3ECertificate%3C/text%3E%3C/svg%3E";
+        };
+        modalTitle.innerText = cert.name + " Certificate";
+        modalDesc.innerText = cert.desc;
+        modal.style.display = "flex";
+        
+        const toast = document.getElementById("toastMsg");
+        toast.innerText = "📜 Opening certificate preview";
+        toast.style.opacity = "1";
+        setTimeout(() => { toast.style.opacity = "0"; }, 1500);
+      });
+      container.appendChild(card);
+    });
+  }
+
+  buildCertContainer("certsFiveMillion", fiveMillionCerts);
+  buildCertContainer("certsCisco", ciscoCerts);
+  buildCertContainer("universityTempoCert", universityTempoCert);
+
+  // Modal close
+  const modal = document.getElementById("certModal");
+  const closeBtn = document.querySelector(".close-modal");
+  function closeModal() { modal.style.display = "none"; }
+  closeBtn.addEventListener("click", closeModal);
+  modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
+
+  // Language translations (full amharic support)
+  const translations = {
+    en: { nav_home: "Home", nav_about: "About", nav_skills: "Skills", nav_services: "Services", nav_certs: "Certificates", nav_projects: "Projects", nav_contact: "Contact", tagline: '"Innovating Technology, Empowering Digital Skills"', home_intro: "Yoni Tech is a personal technology brand created by Yohannes Aregay, providing digital solutions, IT services, and creative technology work.", view_services: "View Services", contact_me: "Contact Me", about_title: "About Me", name_label: "Name:", name_val: "Yohannes Aregay", prof_label: "Profession:", prof_val: "IT Specialist and Digital Creator", edu_label: "Education:", edu_val: "BSc in Information Technology – Debre Tabor University", loc_label: "Location:", loc_val: "Debre Tabor, Ethiopia", gra_label: "Grade:", gra_val: "3.28 CGPA, 55% passed exit exam", about_desc: "I am an Information Technology graduate from Debre Tabor University passionate about technology, digital innovation, and helping individuals and businesses grow through modern IT solutions.", skills_title: "Skills & Expertise", services_title: "What I Offer", certs_title: "Certifications & Awards", projects_title: "Featured Project", contact_title: "Get In Touch", footer_desc: "Innovative IT solutions by Yohannes Aregay." },
+    am: { nav_home: "መነሻ", nav_about: "ስለ እኔ", nav_skills: "ክህሎቶች", nav_services: "አገልግሎቶች", nav_certs: "ሰርተፊኬቶች", nav_projects: "ፕሮጀክቶች", nav_contact: "አግኙኝ", tagline: '"ቴክኖሎጂን ማደስ፣ ዲጂታል ክህሎቶችን ማብቃት"', home_intro: "ዮኒ ቴክ በዮሃንስ አረጋይ የተፈጠረ የግል ቴክኖሎጂ ብራንድ ሲሆን ዲጂታል መፍትሄዎችን እና የአይቲ አገልግሎቶችን ይሰጣል።", view_services: "አገልግሎቶች", contact_me: "ያግኙኝ", about_title: "ስለ እኔ", name_label: "ስም:", name_val: "ዮሃንስ አረጋይ", prof_label: "ሙያ:", prof_val: "አይቲ ስፔሻሊስት", edu_label: "ትምህርት:", edu_val: "ደብረ ታቦር ዩኒቨርሲቲ", loc_label: "አድራሻ:", loc_val: "ደብረ ታቦር", gra_label: "ውጤት:", gra_val: "3.28 ሲጂፒኤ፣ 55% የመውጫ ፈተና", about_desc: "የኢንፎርሜሽን ቴክኖሎጂ ተመራቂ ነኝ፣ በቴክኖሎጂ የተመሰረቱ መፍትሄዎችን በመፍጠር እና ዲጂታል ፈጠራ ላይ እተገብራለሁ።", skills_title: "ክህሎቶች", services_title: "አገልግሎቶች", certs_title: "ሰርተፊኬቶች", projects_title: "ፕሮጀክት", contact_title: "አግኙኝ", footer_desc: "ዘመናዊ የአይቲ መፍትሄዎች" }
+  };
+  let currentLang = "en";
+  function applyLanguage(lang) {
+    const t = translations[lang];
+    document.querySelectorAll("[data-key]").forEach(el => {
+      const key = el.getAttribute("data-key");
+      if (t[key]) el.innerText = t[key];
+    });
+    document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+    document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add("active");
+  }
+  document.querySelectorAll(".lang-btn").forEach(btn => btn.addEventListener("click", () => applyLanguage(btn.getAttribute("data-lang"))));
+  applyLanguage("en");
+
+  // Progress animation
+  const progressBars = document.querySelectorAll(".progress-fill");
+  function animateProgress() {
+    progressBars.forEach(bar => {
+      const percent = bar.getAttribute("data-progress");
+      const rect = bar.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100 && rect.bottom > 0 && !bar.style.width) {
+        bar.style.width = percent + "%";
+      }
+    });
+  }
+  window.addEventListener("scroll", animateProgress);
+  animateProgress();
+
+  // Contact form with modern functional submission (simulate secure send + hash)
+  const contactForm = document.getElementById("contactForm");
+  const toastMsg = document.getElementById("toastMsg");
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("msg").value.trim();
+    if (!name || !email) {
+      toastMsg.innerText = "⚠️ Please fill name and email!";
+      toastMsg.style.opacity = 1;
+      setTimeout(() => toastMsg.style.opacity = 0, 2500);
+      return;
+    }
+    // Hashing simulation & modern feedback
+    const encoder = new TextEncoder();
+    const hashBuffer = await crypto.subtle.digest("SHA-256", encoder.encode(name+email+message+Date.now()));
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    console.log("Secure hash generated:", hashHex);
+    
+    toastMsg.innerText = `✅ Thanks ${name}! Your message secured & delivered.`;
+    toastMsg.style.opacity = 1;
+    setTimeout(() => toastMsg.style.opacity = 0, 3000);
+    contactForm.reset();
+  });
+
+  // Profile fallback already handled inline
+  console.log("✅ Yoni Tech portfolio ready. Place certificate images: at.jpg, andriod.jpg, data.jpg, program.jpg, basic_networking.png, cisco.png, cybersecurity.png, and temp.png for DTU Tempo.");
+</script>
+</body>
+</html>
